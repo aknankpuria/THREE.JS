@@ -1,5 +1,5 @@
 import {Canvas, useFrame} from '@react-three/fiber'
-import {OrbitControls} from '@react-three/drei'
+import {OrbitControls, Sparkles} from '@react-three/drei'
 import React from 'react'
 
 const RotatingCube = () => {
@@ -8,11 +8,14 @@ const RotatingCube = () => {
     if(!meshref.current) return
     meshref.current.rotation.x += 0.01
     meshref.current.rotation.y += 0.01
+    meshref.current.rotation.z += 0.01
   })
   return (
     <mesh ref={meshref}>
       <cylinderGeometry args={[1, 1, 1]} />
       <meshLambertMaterial color={'#468585'} emmisive={'#468585'} />
+
+      <Sparkles count={200} scale={1} speed={0.001} size={7} noise={0.2} color= 'yellow' />
     </mesh>
   )
 }
